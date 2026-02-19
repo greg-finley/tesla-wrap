@@ -13,6 +13,7 @@ import numpy as np
 
 TEMPLATE_PATH  = "template.png"
 OUTPUT_PATH    = "outputs/yoshi_doors.png"
+SKY_BLUE       = (100, 185, 255, 255)
 LEFT_YOSHI     = "raw/yoshi_90.png"
 RIGHT_YOSHI    = "raw/yoshi_270.png"
 
@@ -40,6 +41,12 @@ def place_sprite(canvas: Image.Image, sprite_path: str, door: dict) -> None:
 
 def main():
     template = Image.open(TEMPLATE_PATH).convert("RGBA")
+
+    # Flood the entire background with sky blue
+    data = np.array(template)
+    white = (data[:,:,0] > 200) & (data[:,:,1] > 200) & (data[:,:,2] > 200)
+    data[white] = SKY_BLUE
+    template = Image.fromarray(data)
 
     place_sprite(template, LEFT_YOSHI,  LEFT_DOOR)
     place_sprite(template, RIGHT_YOSHI, RIGHT_DOOR)
