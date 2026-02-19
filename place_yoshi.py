@@ -1,0 +1,52 @@
+"""
+place_yoshi.py
+
+Composites Yoshi sprites onto the left and right door panels of the
+Tesla Model Y wrap template, centered within each door area.
+
+Left door  → yoshi_90.png  (rotated so he's upright on the car)
+Right door → yoshi_270.png (rotated so he's upright on the car)
+"""
+
+from PIL import Image
+import numpy as np
+
+TEMPLATE_PATH  = "template.png"
+OUTPUT_PATH    = "outputs/yoshi_doors.png"
+LEFT_YOSHI     = "raw/yoshi_90.png"
+RIGHT_YOSHI    = "raw/yoshi_270.png"
+
+# Bounding boxes of the combined door areas (front + rear door panels)
+# detected from the template's connected white regions
+LEFT_DOOR  = dict(x0=28,  y0=284, x1=222, y1=768)
+RIGHT_DOOR = dict(x0=804, y0=283, x1=998, y1=768)
+
+# Scale Yoshi to this fraction of the door's smaller dimension
+YOSHI_SCALE = 0.85
+
+
+def place_sprite(canvas: Image.Image, sprite_path: str, door: dict) -> None:
+    door_w = door["x1"] - door["x0"]
+    door_h = door["y1"] - door["y0"]
+
+    size = int(min(door_w, door_h) * YOSHI_SCALE)
+    sprite = Image.open(sprite_path).convert("RGBA").resize((size, size), Image.LANCZOS)
+
+    cx = door["x0"] + door_w // 2 - size // 2
+    cy = door["y0"] + door_h // 2 - size // 2
+
+    canvas.paste(sprite, (cx, cy), mask=sprite)
+
+
+def main():
+    template = Image.open(TEMPLATE_PATH).convert("RGBA")
+
+    place_sprite(template, LEFT_YOSHI,  LEFT_DOOR)
+    place_sprite(template, RIGHT_YOSHI, RIGHT_DOOR)
+
+    template.save(OUTPUT_PATH)
+    print(f"Saved {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()
