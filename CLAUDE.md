@@ -19,6 +19,12 @@ appears right-side-up when the wrap is applied to the car door. The same applies
 
 Only work on left panels unless explicitly asked to touch middle or right panels.
 
+## Git Workflow
+
+Commit regularly throughout a session — after adding new scripts, after meaningful changes
+to existing scripts, and after generating notable outputs. Don't wait until the end.
+Each commit should capture one logical step so the history is easy to follow.
+
 ## Outputs
 
 Previous designs saved in `outputs/`:
