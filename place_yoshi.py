@@ -16,10 +16,10 @@ OUTPUT_PATH    = "outputs/yoshi_doors.png"
 LEFT_YOSHI     = "raw/yoshi_90.png"
 RIGHT_YOSHI    = "raw/yoshi_270.png"
 
-# Bounding boxes of the combined door areas (front + rear door panels)
+# Bounding boxes of the front door panels only (driver + front passenger)
 # detected from the template's connected white regions
-LEFT_DOOR  = dict(x0=28,  y0=284, x1=222, y1=768)
-RIGHT_DOOR = dict(x0=804, y0=283, x1=998, y1=768)
+LEFT_DOOR  = dict(x0=30,  y0=284, x1=205, y1=544)
+RIGHT_DOOR = dict(x0=821, y0=283, x1=997, y1=544)
 
 # Scale Yoshi to this fraction of the door's smaller dimension
 YOSHI_SCALE = 0.85
