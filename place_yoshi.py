@@ -14,8 +14,8 @@ import numpy as np
 TEMPLATE_PATH  = "template.png"
 OUTPUT_PATH    = "outputs/yoshi_doors.png"
 SKY_BLUE       = (100, 185, 255, 255)
-LEFT_YOSHI     = "raw/yoshi_90.png"
-RIGHT_YOSHI    = "raw/yoshi_270.png"
+LEFT_YOSHI     = "raw/sky_yoshi_90.png"
+RIGHT_YOSHI    = "raw/sky_yoshi_270.png"
 
 # Bounding boxes of the front door panels only (driver + front passenger)
 # detected from the template's connected white regions
