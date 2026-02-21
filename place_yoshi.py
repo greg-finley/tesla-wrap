@@ -24,7 +24,7 @@ FRUNK_FACE     = "raw/sky_yoshi_face_180.png"  # upside-down
 # detected from the template's connected white regions
 LEFT_DOOR  = dict(x0=30,  y0=284, x1=205, y1=544)
 RIGHT_DOOR = dict(x0=821, y0=283, x1=997, y1=544)
-TRUNK      = dict(x0=352, y0=800, x1=671, y1=940, scale=1.5)  # 1.5x bigger
+TRUNK      = dict(x0=352, y0=800, x1=671, y1=940, scale=0.5)  # 2/3 smaller
 FRUNK      = dict(x0=409, y0=165, x1=615, y1=215, scale=3.0)  # fill most of panel
 
 # Scale Yoshi to this fraction of the door's smaller dimension
